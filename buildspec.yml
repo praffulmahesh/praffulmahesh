@@ -6,14 +6,18 @@ env:
 
 phases:
   install:
+    runtime-versions:
+      golang: 1.20
     commands:
       - echo Installing Go...
       - go version
   build:
     commands:
-      - echo Skipping tests, building binary...
+      - echo Running tests...
+      - go test ./...
+      - echo Building service...
+      - mkdir -p bin
       - go build -o bin/service
-
 artifacts:
   files:
     - bin/service
