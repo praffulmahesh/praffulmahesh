@@ -1,0 +1,18 @@
+version: 0.2
+env:
+  secrets-manager:
+    GITHUB_TOKEN:/github-token
+phases:
+  install:
+    commands:
+      - echo Installing Go...
+      - go version
+  build:
+    commands:
+      - echo Running tests...
+      - go test ./...
+      - echo Building service...
+      - go build -o bin/service
+artifacts:
+  files:
+    - bin/service
